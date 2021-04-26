@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hMhKplLvN0o9d4I7TJBUlJXyIlQhZKxjAWrnq6LjiN6zLxxmR+9y9kvWcfCnHfPciwsrBun5EK+doLFdzoOxjQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\stefan.kolev\\source\\repos\\RentACarBackend\\RentACarBackend\\RentACarBackend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\stefan.kolev\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}
