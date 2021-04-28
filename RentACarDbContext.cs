@@ -27,5 +27,6 @@ namespace RentACarBackend
         public DbSet<RentACarBackend.Models.Cars.Model> Model { get; set; }
         public DbSet<RentACarBackend.Models.Cars.Car> Car { get; set; }
         public DbSet<RentACarBackend.Models.Rent> Rent { get; set; }
+        public DbSet<RentACarBackend.Models.Client> Client { get; set; }
     }
 }
