@@ -13,5 +13,7 @@ namespace RentACarBackend.Models
     {
         public long Id {  get; set; }
         public string Name { get;set; }
+
+        public virtual ICollection<Rent> Rents { get; set; }
     }
 }

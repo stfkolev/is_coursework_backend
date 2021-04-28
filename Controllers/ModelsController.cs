@@ -6,54 +6,54 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RentACarBackend;
-using RentACarBackend.Models;
+using RentACarBackend.Models.Cars;
 
 namespace RentACarBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompaniesController : ControllerBase
+    public class ModelsController : ControllerBase
     {
         private readonly RentACarDbContext _context;
 
-        public CompaniesController(RentACarDbContext context)
+        public ModelsController(RentACarDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Companies
+        // GET: api/Models
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
+        public async Task<ActionResult<IEnumerable<Model>>> GetModel()
         {
-            return await _context.Companies.ToListAsync();
+            return await _context.Model.ToListAsync();
         }
 
-        // GET: api/Companies/5
+        // GET: api/Models/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Company>> GetCompany(long id)
+        public async Task<ActionResult<Model>> GetModel(long id)
         {
-            var company = await _context.Companies.FindAsync(id);
+            var model = await _context.Model.FindAsync(id);
 
-            if (company == null)
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return company;
+            return model;
         }
 
-        // PUT: api/Companies/5
+        // PUT: api/Models/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCompany(long id, Company company)
+        public async Task<IActionResult> PutModel(long id, Model model)
         {
-            if (id != company.Id)
+            if (id != model.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(company).State = EntityState.Modified;
+            _context.Entry(model).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace RentACarBackend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CompanyExists(id))
+                if (!ModelExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace RentACarBackend.Controllers
             return NoContent();
         }
 
-        // POST: api/Companies
+        // POST: api/Models
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Company>> PostCompany(Company company)
+        public async Task<ActionResult<Model>> PostModel(Model model)
         {
-            _context.Companies.Add(company);
+            _context.Model.Add(model);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCompany", new { id = company.Id }, company);
+            return CreatedAtAction("GetModel", new { id = model.Id }, model);
         }
 
-        // DELETE: api/Companies/5
+        // DELETE: api/Models/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Company>> DeleteCompany(long id)
+        public async Task<ActionResult<Model>> DeleteModel(long id)
         {
-            var company = await _context.Companies.FindAsync(id);
-            if (company == null)
+            var model = await _context.Model.FindAsync(id);
+            if (model == null)
             {
                 return NotFound();
             }
 
-            _context.Companies.Remove(company);
+            _context.Model.Remove(model);
             await _context.SaveChangesAsync();
 
-            return company;
+            return model;
         }
 
-        private bool CompanyExists(long id)
+        private bool ModelExists(long id)
         {
-            return _context.Companies.Any(e => e.Id == id);
+            return _context.Model.Any(e => e.Id == id);
         }
     }
 }
