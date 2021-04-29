@@ -295,6 +295,9 @@ namespace RentACarBackend.Migrations
                     b.Property<DateTime>("PickUpDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<float>("Price")
+                        .HasColumnType("REAL");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
