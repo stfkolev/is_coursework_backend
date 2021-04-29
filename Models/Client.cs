@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RentACarBackend.Models
@@ -16,6 +17,7 @@ namespace RentACarBackend.Models
 
         public DateTime LicenseExpiryDate { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Rent> Rents { get; set; }
     }
 }

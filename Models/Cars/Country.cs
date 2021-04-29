@@ -16,6 +16,8 @@ namespace RentACarBackend.Models.Cars
         public string Code { get; set; }
 
         public DateTime CreatedAt { get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<Manufacturer> Manufacturers { get; set; }
     }
 }

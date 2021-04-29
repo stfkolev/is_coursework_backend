@@ -25,6 +25,12 @@ namespace RentACarBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o => o.AddPolicy("FrontendPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddDbContext<RentACarDbContext>();
             services.AddControllers();
         }
@@ -36,6 +42,8 @@ namespace RentACarBackend
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("FrontendPolicy");
 
             app.UseHttpsRedirection();
 
