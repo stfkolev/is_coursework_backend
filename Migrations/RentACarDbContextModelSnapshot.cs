@@ -231,6 +231,35 @@ namespace RentACarBackend.Migrations
                     b.ToTable("Transmission");
                 });
 
+            modelBuilder.Entity("RentACarBackend.Models.Client", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("License")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LicenseExpiryDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UCN")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Client");
+                });
+
             modelBuilder.Entity("RentACarBackend.Models.Company", b =>
                 {
                     b.Property<long>("Id")
@@ -269,6 +298,8 @@ namespace RentACarBackend.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("CompanyId");
 
@@ -346,6 +377,12 @@ namespace RentACarBackend.Migrations
                     b.HasOne("RentACarBackend.Models.Cars.Car", null)
                         .WithMany("Rents")
                         .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("RentACarBackend.Models.Client", null)
+                        .WithMany("Rents")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
